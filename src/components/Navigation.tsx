@@ -4,22 +4,24 @@ import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoNew from "/FALANDO-SOBRE-JESUS.svg"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex h-22 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/1e9b9a03-1657-4782-ac70-0fd1c9e9ed80.png" 
-              alt="Falando sobre Jesus" 
-              className="h-10 w-auto"
-            />
-            <span className="font-funnel font-bold text-xl">Falando sobre Jesus</span>
+            <Link to="/">
+              <img 
+                src={logoNew}
+                alt="Falando sobre Jesus" 
+                className="h-12 w-auto lg:h-13"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

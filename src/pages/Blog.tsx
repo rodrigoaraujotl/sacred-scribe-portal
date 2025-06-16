@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Post {
@@ -160,6 +161,8 @@ const Blog = () => {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 };
