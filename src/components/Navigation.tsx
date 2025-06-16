@@ -14,9 +14,11 @@ const Navigation = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">FJ</span>
-            </div>
+            <img 
+              src="/lovable-uploads/1e9b9a03-1657-4782-ac70-0fd1c9e9ed80.png" 
+              alt="Falando sobre Jesus" 
+              className="h-10 w-auto"
+            />
             <span className="font-bold text-xl">Falando sobre Jesus</span>
           </div>
 
