@@ -38,7 +38,7 @@ const Blog = () => {
         .from('posts')
         .select(`
           *,
-          author:users(
+          author:users!author_id(
             member:members(first_name, last_name)
           ),
           comments(count)
