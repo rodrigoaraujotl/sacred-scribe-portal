@@ -15,8 +15,10 @@ interface Post {
   photo?: string;
   created_at: string;
   author?: {
-    first_name: string;
-    last_name: string;
+    member?: {
+      first_name: string;
+      last_name: string;
+    };
   };
   comments?: { count: number }[];
 }
@@ -36,7 +38,9 @@ const Blog = () => {
         .from('posts')
         .select(`
           *,
-          author:members(first_name, last_name),
+          author:users(
+            member:members(first_name, last_name)
+          ),
           comments(count)
         `)
         .eq('approved', true)
@@ -130,9 +134,9 @@ const Blog = () => {
                   <CardTitle className="line-clamp-2 hover:text-primary transition-colors">
                     {post.title}
                   </CardTitle>
-                  {post.author && (
+                  {post.author?.member && (
                     <CardDescription>
-                      Por {post.author.first_name} {post.author.last_name}
+                      Por {post.author.member.first_name} {post.author.member.last_name}
                     </CardDescription>
                   )}
                 </CardHeader>
