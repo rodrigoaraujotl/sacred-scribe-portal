@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,12 +67,16 @@ const Navigation = () => {
 
           {/* Login Button */}
           <div className="hidden md:flex items-center space-x-2">
-            <Button variant="ghost" href="/login">
-              Entrar
-            </Button>
-            <Button href="/login">
-              Área de Membros
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost">
+                Entrar
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button>
+                Área de Membros
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -94,12 +99,16 @@ const Navigation = () => {
               <a href="/sobre" className="text-sm font-medium hover:text-primary transition-colors">Sobre</a>
               <a href="/contato" className="text-sm font-medium hover:text-primary transition-colors">Contato</a>
               <div className="border-t pt-4 space-y-2">
-                <Button variant="ghost" className="w-full justify-start" href="/login">
-                  Entrar
-                </Button>
-                <Button className="w-full justify-start" href="/login">
-                  Área de Membros
-                </Button>
+                <Link to="/login">
+                  <Button variant="ghost" className="w-full justify-start">
+                    Entrar
+                  </Button>
+                </Link>
+                <Link to="/login">
+                  <Button className="w-full justify-start">
+                    Área de Membros
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
