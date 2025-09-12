@@ -1,48 +1,19 @@
-
-import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-
-interface Event {
-  id: number;
-  name: string;
-  description?: string;
-  location?: string;
-  event_date: string;
-}
+import { useEvents } from "@/hooks/useEvents";
+import { toast } from "sonner";
 
 const Events = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { events, isLoading, error } = useEvents();
 
-  useEffect(() => {
-    fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('events')
-        .select('*')
-        .gte('event_date', new Date().toISOString().split('T')[0])
-        .order('event_date', { ascending: true });
-
-      if (error) {
-        console.error('Error fetching events:', error);
-      } else {
-        setEvents(data || []);
-      }
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (error) {
+    toast.error("Erro ao carregar eventos");
+    console.error(error);
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -163,18 +134,18 @@ const Events = () => {
         <div>
           <h2 className="text-3xl font-bold mb-8 text-center">Próximos Eventos Especiais</h2>
           
-          {loading ? (
+          {isLoading ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">Carregando eventos...</p>
             </div>
-          ) : events.length === 0 ? (
+          ) : events?.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">Nenhum evento especial programado no momento.</p>
               <p className="text-muted-foreground mt-2">Fique atento às nossas redes sociais para novidades!</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {events.map((event) => {
+              {events?.map((event) => {
                 const dateBadge = getDateBadge(event.event_date);
                 return (
                   <Card key={event.id} className="hover:shadow-lg transition-shadow duration-300">
@@ -199,6 +170,11 @@ const Events = () => {
                           {event.description}
                         </p>
                       )}
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-sm text-muted-foreground">
+                          {event.attendance.length} participantes
+                        </span>
+                      </div>
                       <Button className="w-full">
                         Participar do Evento
                       </Button>

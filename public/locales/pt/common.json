@@ -1,0 +1,68 @@
+{
+  "navigation": {
+    "home": "Início",
+    "cells": "Células",
+    "events": "Eventos",
+    "blog": "Blog",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair",
+    "welcome": "Olá, {{name}}"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Gerencie membros, células e posts do portal",
+    "stats": {
+      "members": "Membros",
+      "cells": "Células",
+      "posts": "Posts",
+      "events": "Eventos"
+    },
+    "tabs": {
+      "members": "Membros",
+      "posts": "Posts",
+      "settings": "Configurações"
+    },
+    "actions": {
+      "addMember": "Adicionar Membro",
+      "newPost": "Novo Post"
+    }
+  },
+  "cells": {
+    "title": "Células",
+    "subtitle": "Encontre uma célula próxima a você e faça parte de nossa comunidade de fé",
+    "error": "Erro ao carregar células",
+    "meetings": "reuniões",
+    "leader": "Líder",
+    "whatAreCells": {
+      "title": "O que são as Células?",
+      "description": "As células são pequenos grupos que se reúnem semanalmente para estudar a Bíblia, orar juntos e edificar uns aos outros na fé. É um lugar de comunhão íntima onde cada pessoa pode crescer espiritualmente.",
+      "features": {
+        "communion": {
+          "title": "Comunhão",
+          "description": "Relacionamentos próximos e genuínos"
+        },
+        "meetings": {
+          "title": "Encontros Semanais",
+          "description": "Reuniões regulares para crescimento"
+        },
+        "leadership": {
+          "title": "Liderança",
+          "description": "Líderes capacitados e comprometidos"
+        }
+      }
+    },
+    "loading": "Carregando células...",
+    "noCells": "Nenhuma célula cadastrada no momento.",
+    "joinCell": "Participar da Célula",
+    "becomeLeader": {
+      "title": "Quer liderar uma célula?",
+      "description": "Se você sente o chamado para liderar e discipular outros, entre em contato conosco. Oferecemos treinamento e suporte completo para novos líderes.",
+      "button": "Quero ser um Líder"
+    }
+  }
+} 

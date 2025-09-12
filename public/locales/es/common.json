@@ -1,0 +1,68 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "cells": "Células",
+    "events": "Eventos",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "welcome": "Hola, {{name}}"
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "subtitle": "Administre miembros, células y publicaciones del portal",
+    "stats": {
+      "members": "Miembros",
+      "cells": "Células",
+      "posts": "Publicaciones",
+      "events": "Eventos"
+    },
+    "tabs": {
+      "members": "Miembros",
+      "posts": "Publicaciones",
+      "settings": "Configuración"
+    },
+    "actions": {
+      "addMember": "Agregar Miembro",
+      "newPost": "Nueva Publicación"
+    }
+  },
+  "cells": {
+    "title": "Células",
+    "subtitle": "Encuentre una célula cerca de usted y sea parte de nuestra comunidad de fe",
+    "error": "Error al cargar las células",
+    "meetings": "reuniones",
+    "leader": "Líder",
+    "whatAreCells": {
+      "title": "¿Qué son las Células?",
+      "description": "Las células son pequeños grupos que se reúnen semanalmente para estudiar la Biblia, orar juntos y edificarse mutuamente en la fe. Es un lugar de comunión íntima donde cada persona puede crecer espiritualmente.",
+      "features": {
+        "communion": {
+          "title": "Comunión",
+          "description": "Relaciones cercanas y genuinas"
+        },
+        "meetings": {
+          "title": "Reuniones Semanales",
+          "description": "Reuniones regulares para el crecimiento"
+        },
+        "leadership": {
+          "title": "Liderazgo",
+          "description": "Líderes capacitados y comprometidos"
+        }
+      }
+    },
+    "loading": "Cargando células...",
+    "noCells": "No hay células registradas en este momento.",
+    "joinCell": "Unirse a la Célula",
+    "becomeLeader": {
+      "title": "¿Quieres liderar una célula?",
+      "description": "Si sientes el llamado a liderar y discipular a otros, contáctanos. Ofrecemos entrenamiento y apoyo completo para nuevos líderes.",
+      "button": "Quiero ser un Líder"
+    }
+  }
+} 
