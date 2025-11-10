@@ -1,13 +1,15 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoNew from "/FALANDO-SOBRE-JESUS.svg"
+import { useTranslation } from "react-i18next";
+import { LanguageSelector } from "./LanguageSelector";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -29,12 +31,12 @@ const Navigation = () => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 font-inconsolata">
-                  Início
+                  {t('navigation.home')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/blog" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 font-inconsolata">
-                  Blog
+                  {t('navigation.blog')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -58,12 +60,12 @@ const Navigation = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/sobre" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 font-inconsolata">
-                  Sobre
+                  {t('navigation.about')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/contato" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 font-inconsolata">
-                  Contato
+                  {t('navigation.contact')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -71,9 +73,10 @@ const Navigation = () => {
 
           {/* Login Button */}
           <div className="hidden md:flex items-center space-x-2">
+            <LanguageSelector />
             <Link to="/login">
               <Button variant="ghost" className="font-inconsolata">
-                Entrar
+                {t('auth.login')}
               </Button>
             </Link>
             <Link to="/login">
@@ -96,16 +99,28 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden border-t py-4">
             <nav className="flex flex-col space-y-4">
-              <a href="/" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Início</a>
-              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Blog</a>
-              <a href="/celulas" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Células</a>
-              <a href="/eventos" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Eventos</a>
-              <a href="/sobre" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Sobre</a>
-              <a href="/contato" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">Contato</a>
+              <a href="/" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.home')}
+              </a>
+              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.blog')}
+              </a>
+              <a href="/celulas" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.cells')}
+              </a>
+              <a href="/eventos" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.events')}
+              </a>
+              <a href="/sobre" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.about')}
+              </a>
+              <a href="/contato" className="text-sm font-medium hover:text-primary transition-colors font-inconsolata">
+                {t('navigation.contact')}
+              </a>
               <div className="border-t pt-4 space-y-2">
                 <Link to="/login">
                   <Button variant="ghost" className="w-full justify-start font-inconsolata">
-                    Entrar
+                    {t('auth.login')}
                   </Button>
                 </Link>
                 <Link to="/login">

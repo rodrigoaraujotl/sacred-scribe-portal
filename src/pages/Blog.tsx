@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,62 +6,22 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { supabase } from "@/integrations/supabase/client";
-
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  photo?: string;
-  created_at: string;
-  author?: {
-    member?: {
-      first_name: string;
-      last_name: string;
-    };
-  };
-  comments?: { count: number }[];
-}
+import { usePosts } from "@/hooks/usePosts";
+import { toast } from "sonner";
 
 const Blog = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { posts, isLoading, error } = usePosts();
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  if (error) {
+    toast.error("Erro ao carregar posts");
+    console.error(error);
+  }
 
-  const fetchPosts = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('posts')
-        .select(`
-          *,
-          author:users!author_id(
-            member:members(first_name, last_name)
-          ),
-          comments(count)
-        `)
-        .eq('approved', true)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching posts:', error);
-      } else {
-        setPosts(data || []);
-      }
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const filteredPosts = posts.filter(post =>
+  const filteredPosts = posts?.filter(post =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     post.content.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ) || [];
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('pt-BR', {
@@ -102,7 +61,7 @@ const Blog = () => {
           </div>
         </div>
 
-        {loading ? (
+        {isLoading ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground">Carregando posts...</p>
           </div>
@@ -135,9 +94,9 @@ const Blog = () => {
                   <CardTitle className="line-clamp-2 hover:text-primary transition-colors">
                     {post.title}
                   </CardTitle>
-                  {post.author?.member && (
+                  {post.author && (
                     <CardDescription>
-                      Por {post.author.member.first_name} {post.author.member.last_name}
+                      Por {post.author.username}
                     </CardDescription>
                   )}
                 </CardHeader>
@@ -149,11 +108,9 @@ const Blog = () => {
                     <Button variant="ghost" size="sm">
                       Ler mais
                     </Button>
-                    {post.comments && (
-                      <span className="text-sm text-muted-foreground">
-                        {post.comments.length} comentários
-                      </span>
-                    )}
+                    <span className="text-sm text-muted-foreground">
+                      {post.comments.length} comentários
+                    </span>
                   </div>
                 </CardContent>
               </Card>
