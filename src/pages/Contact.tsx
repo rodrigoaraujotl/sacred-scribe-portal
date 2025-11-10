@@ -119,8 +119,8 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  (11) 3456-7890<br />
-                  WhatsApp: (11) 99999-9999
+                  (11) 5198-2149<br />
+                  WhatsApp: (11) 5198-2149
                 </p>
               </CardContent>
             </Card>
