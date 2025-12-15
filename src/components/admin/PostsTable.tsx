@@ -11,7 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { ptBR, enUS, es } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 
 interface Post {
   id: number;
@@ -26,6 +27,7 @@ interface Post {
 }
 
 export function PostsTable() {
+  const { t, i18n } = useTranslation();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts", "all"],
     queryFn: async () => {
@@ -42,19 +44,25 @@ export function PostsTable() {
   });
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return <div>{t('dashboard.postsTable.loading')}</div>;
   }
+
+  const getLocale = () => {
+    if (i18n.language === 'pt') return ptBR;
+    if (i18n.language === 'es') return es;
+    return enUS;
+  };
 
   return (
     <div className="rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Título</TableHead>
-            <TableHead>Autor</TableHead>
-            <TableHead>Data</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="text-right">Ações</TableHead>
+            <TableHead>{t('dashboard.postsTable.title')}</TableHead>
+            <TableHead>{t('dashboard.postsTable.author')}</TableHead>
+            <TableHead>{t('dashboard.postsTable.date')}</TableHead>
+            <TableHead>{t('dashboard.postsTable.status')}</TableHead>
+            <TableHead className="text-right">{t('dashboard.postsTable.actions')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -66,7 +74,7 @@ export function PostsTable() {
               </TableCell>
               <TableCell>
                 {format(new Date(post.created_at), "dd/MM/yyyy", {
-                  locale: ptBR,
+                  locale: getLocale(),
                 })}
               </TableCell>
               <TableCell>
@@ -80,18 +88,18 @@ export function PostsTable() {
                   }
                 >
                   {post.status === "published"
-                    ? "Publicado"
+                    ? t('dashboard.postsTable.published')
                     : post.status === "draft"
-                    ? "Rascunho"
-                    : "Rejeitado"}
+                    ? t('dashboard.postsTable.draft')
+                    : t('dashboard.postsTable.rejected')}
                 </Badge>
               </TableCell>
               <TableCell className="text-right">
                 <Button variant="ghost" size="sm" className="mr-2">
-                  Editar
+                  {t('dashboard.actions.edit')}
                 </Button>
                 <Button variant="ghost" size="sm">
-                  {post.status === "published" ? "Despublicar" : "Publicar"}
+                  {post.status === "published" ? t('dashboard.actions.unpublish') : t('dashboard.actions.publish')}
                 </Button>
               </TableCell>
             </TableRow>

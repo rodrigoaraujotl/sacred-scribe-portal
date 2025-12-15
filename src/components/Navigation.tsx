@@ -40,19 +40,19 @@ const Navigation = () => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-inconsolata">Ministério</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="font-inconsolata">{t('navigation.ministry')}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid gap-3 p-6 w-[400px]">
                     <NavigationMenuLink href="/celulas" className="block space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none font-funnel">Células</div>
+                      <div className="text-sm font-medium leading-none font-funnel">{t('navigation.cells')}</div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground font-inconsolata">
-                        Encontre uma célula próxima a você
+                        {t('navigation.findCell')}
                       </p>
                     </NavigationMenuLink>
                     <NavigationMenuLink href="/eventos" className="block space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                      <div className="text-sm font-medium leading-none font-funnel">Eventos</div>
+                      <div className="text-sm font-medium leading-none font-funnel">{t('navigation.events')}</div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground font-inconsolata">
-                        Participe dos nossos eventos
+                        {t('navigation.joinEvents')}
                       </p>
                     </NavigationMenuLink>
                   </div>
@@ -81,7 +81,7 @@ const Navigation = () => {
             </Link>
             <Link to="/login">
               <Button className="font-inconsolata">
-                Área de Membros
+                {t('navigation.membersArea')}
               </Button>
             </Link>
           </div>
@@ -125,7 +125,7 @@ const Navigation = () => {
                 </Link>
                 <Link to="/login">
                   <Button className="w-full justify-start font-inconsolata">
-                    Área de Membros
+                    {t('navigation.membersArea')}
                   </Button>
                 </Link>
               </div>

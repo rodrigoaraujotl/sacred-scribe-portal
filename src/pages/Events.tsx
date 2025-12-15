@@ -6,18 +6,21 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { useEvents } from "@/hooks/useEvents";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const Events = () => {
+  const { t, i18n } = useTranslation();
   const { events, isLoading, error } = useEvents();
 
   if (error) {
-    toast.error("Erro ao carregar eventos");
+    toast.error(t('events.error'));
     console.error(error);
   }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', {
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    return date.toLocaleDateString(locale, {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
@@ -31,9 +34,9 @@ const Events = () => {
     const diffTime = eventDate.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    if (diffDays === 0) return { text: "Hoje", variant: "destructive" as const };
-    if (diffDays === 1) return { text: "Amanhã", variant: "default" as const };
-    if (diffDays <= 7) return { text: `Em ${diffDays} dias`, variant: "secondary" as const };
+    if (diffDays === 0) return { text: t('events.today'), variant: "destructive" as const };
+    if (diffDays === 1) return { text: t('events.tomorrow'), variant: "default" as const };
+    if (diffDays <= 7) return { text: t('events.inDays', { count: diffDays }), variant: "secondary" as const };
     return { text: formatDate(dateString).split(',')[0], variant: "outline" as const };
   };
 
@@ -43,37 +46,37 @@ const Events = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Eventos</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('events.title')}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Participe dos nossos eventos e fortaleça sua caminhada com Cristo
+            {t('events.subtitle')}
           </p>
         </div>
 
         {/* Regular Events Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Eventos Regulares</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">{t('events.regularEvents')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="border-primary/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
-                  Culto Dominical
+                  {t('events.regularEventsList.sundayService.title')}
                 </CardTitle>
-                <CardDescription>Todo domingo, 9h e 19h</CardDescription>
+                <CardDescription>{t('events.regularEventsList.sundayService.schedule')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    <span>Templo Principal</span>
+                    <span>{t('events.regularEventsList.sundayService.location')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
-                    <span>Toda a família</span>
+                    <span>{t('events.regularEventsList.sundayService.audience')}</span>
                   </div>
                 </div>
                 <p className="mt-4 text-sm">
-                  Momentos de adoração, louvor e ministração da palavra de Deus.
+                  {t('events.regularEventsList.sundayService.description')}
                 </p>
               </CardContent>
             </Card>
@@ -82,23 +85,23 @@ const Events = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
-                  Estudo Bíblico
+                  {t('events.regularEventsList.bibleStudy.title')}
                 </CardTitle>
-                <CardDescription>Toda quarta-feira, 19h30</CardDescription>
+                <CardDescription>{t('events.regularEventsList.bibleStudy.schedule')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    <span>Salão de Estudos</span>
+                    <span>{t('events.regularEventsList.bibleStudy.location')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
-                    <span>Jovens e Adultos</span>
+                    <span>{t('events.regularEventsList.bibleStudy.audience')}</span>
                   </div>
                 </div>
                 <p className="mt-4 text-sm">
-                  Aprofunde-se na palavra de Deus através de estudos temáticos.
+                  {t('events.regularEventsList.bibleStudy.description')}
                 </p>
               </CardContent>
             </Card>
@@ -107,23 +110,23 @@ const Events = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5 text-primary" />
-                  Vigília de Oração
+                  {t('events.regularEventsList.prayerVigil.title')}
                 </CardTitle>
-                <CardDescription>Toda sexta-feira, 19h30</CardDescription>
+                <CardDescription>{t('events.regularEventsList.prayerVigil.schedule')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
-                    <span>Templo Principal</span>
+                    <span>{t('events.regularEventsList.prayerVigil.location')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    <span>2 horas de duração</span>
+                    <span>{t('events.regularEventsList.prayerVigil.duration')}</span>
                   </div>
                 </div>
                 <p className="mt-4 text-sm">
-                  Momento especial de oração, intercessão e busca a Deus.
+                  {t('events.regularEventsList.prayerVigil.description')}
                 </p>
               </CardContent>
             </Card>
@@ -132,16 +135,16 @@ const Events = () => {
 
         {/* Upcoming Events */}
         <div>
-          <h2 className="text-3xl font-bold mb-8 text-center">Próximos Eventos Especiais</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">{t('events.upcomingEvents')}</h2>
           
           {isLoading ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">Carregando eventos...</p>
+              <p className="text-muted-foreground">{t('events.loading')}</p>
             </div>
           ) : events?.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">Nenhum evento especial programado no momento.</p>
-              <p className="text-muted-foreground mt-2">Fique atento às nossas redes sociais para novidades!</p>
+              <p className="text-muted-foreground">{t('events.noEvents')}</p>
+              <p className="text-muted-foreground mt-2">{t('events.stayTuned')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -172,11 +175,11 @@ const Events = () => {
                       )}
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-sm text-muted-foreground">
-                          {event.attendance.length} participantes
+                          {event.attendance.length} {t('events.participants')}
                         </span>
                       </div>
                       <Button className="w-full">
-                        Participar do Evento
+                        {t('events.participate')}
                       </Button>
                     </CardContent>
                   </Card>

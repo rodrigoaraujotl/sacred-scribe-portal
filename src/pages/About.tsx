@@ -3,27 +3,28 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Users, Book, Church } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Sobre Nós</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('about.title')}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Conheça nossa história, missão e valores como comunidade cristã
+            {t('about.subtitle')}
           </p>
         </div>
 
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-12">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Nossa Missão</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('about.mission.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Compartilhar o amor de Jesus Cristo através da palavra, da comunhão e do serviço, 
-              edificando vidas e fortalecendo a fé de cada pessoa que faz parte da nossa comunidade.
+              {t('about.mission.description')}
             </p>
           </div>
         </div>
@@ -33,11 +34,11 @@ const About = () => {
           <Card className="text-center">
             <CardHeader>
               <Heart className="h-12 w-12 text-primary mx-auto mb-4" />
-              <CardTitle>Amor</CardTitle>
+              <CardTitle>{t('about.values.love.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Demonstramos o amor de Cristo em todas as nossas ações e relacionamentos
+                {t('about.values.love.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -45,11 +46,11 @@ const About = () => {
           <Card className="text-center">
             <CardHeader>
               <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-              <CardTitle>Comunhão</CardTitle>
+              <CardTitle>{t('about.values.communion.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Valorizamos a união e o companheirismo entre os irmãos na fé
+                {t('about.values.communion.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -57,11 +58,11 @@ const About = () => {
           <Card className="text-center">
             <CardHeader>
               <Book className="h-12 w-12 text-primary mx-auto mb-4" />
-              <CardTitle>Palavra</CardTitle>
+              <CardTitle>{t('about.values.word.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Fundamentamos nossa fé e ensino na Palavra de Deus
+                {t('about.values.word.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -69,11 +70,11 @@ const About = () => {
           <Card className="text-center">
             <CardHeader>
               <Church className="h-12 w-12 text-primary mx-auto mb-4" />
-              <CardTitle>Serviço</CardTitle>
+              <CardTitle>{t('about.values.service.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Servimos a Deus e ao próximo com dedicação e humildade
+                {t('about.values.service.description')}
               </CardDescription>
             </CardContent>
           </Card>
@@ -83,30 +84,22 @@ const About = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Nossa História</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('about.history.title')}</h3>
               <p className="text-muted-foreground mb-4">
-                O ministério "Falando sobre Jesus" nasceu do desejo de compartilhar 
-                a palavra de Deus de forma simples e acessível, alcançando corações 
-                e transformando vidas através do evangelho.
+                {t('about.history.paragraph1')}
               </p>
               <p className="text-muted-foreground">
-                Começamos como um pequeno grupo de estudos bíblicos e crescemos 
-                para nos tornar uma comunidade vibrante de fé, sempre focados 
-                em Jesus Cristo como centro de tudo.
+                {t('about.history.paragraph2')}
               </p>
             </div>
             
             <div>
-              <h3 className="text-2xl font-bold mb-4">Nossa Visão</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('about.vision.title')}</h3>
               <p className="text-muted-foreground mb-4">
-                Ser uma comunidade cristã que impacta positivamente a sociedade, 
-                formando discípulos comprometidos com a palavra de Deus e 
-                o serviço ao próximo.
+                {t('about.vision.paragraph1')}
               </p>
               <p className="text-muted-foreground">
-                Buscamos ser uma igreja relevante para nossa geração, sem perder 
-                a essência do evangelho, sempre proclamando Jesus como Salvador 
-                e Senhor.
+                {t('about.vision.paragraph2')}
               </p>
             </div>
           </div>

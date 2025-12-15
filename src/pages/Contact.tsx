@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
@@ -20,9 +22,9 @@ const Contact = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contato</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('contact.title')}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Entre em contato conosco. Estamos aqui para orar com você e responder suas dúvidas
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -30,9 +32,9 @@ const Contact = () => {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Envie uma Mensagem</CardTitle>
+              <CardTitle>{t('contact.form.title')}</CardTitle>
               <CardDescription>
-                Preencha o formulário abaixo e entraremos em contato em breve
+                {t('contact.form.description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -40,53 +42,53 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                      Nome
+                      {t('contact.form.firstName')}
                     </label>
-                    <Input id="firstName" placeholder="Seu nome" required />
+                    <Input id="firstName" placeholder={t('contact.form.firstNamePlaceholder')} required />
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                      Sobrenome
+                      {t('contact.form.lastName')}
                     </label>
-                    <Input id="lastName" placeholder="Seu sobrenome" required />
+                    <Input id="lastName" placeholder={t('contact.form.lastNamePlaceholder')} required />
                   </div>
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email
+                    {t('contact.form.email')}
                   </label>
-                  <Input id="email" type="email" placeholder="seu@email.com" required />
+                  <Input id="email" type="email" placeholder={t('contact.form.emailPlaceholder')} required />
                 </div>
                 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Telefone (opcional)
+                    {t('contact.form.phone')}
                   </label>
-                  <Input id="phone" type="tel" placeholder="(11) 99999-9999" />
+                  <Input id="phone" type="tel" placeholder={t('contact.form.phonePlaceholder')} />
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                    Assunto
+                    {t('contact.form.subject')}
                   </label>
-                  <Input id="subject" placeholder="Como podemos ajudar?" required />
+                  <Input id="subject" placeholder={t('contact.form.subjectPlaceholder')} required />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensagem
+                    {t('contact.form.message')}
                   </label>
                   <Textarea 
                     id="message" 
-                    placeholder="Escreva sua mensagem aqui..." 
+                    placeholder={t('contact.form.messagePlaceholder')} 
                     rows={5}
                     required 
                   />
                 </div>
                 
                 <Button type="submit" className="w-full">
-                  Enviar Mensagem
+                  {t('contact.form.submit')}
                 </Button>
               </form>
             </CardContent>
@@ -98,15 +100,11 @@ const Contact = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5" />
-                  Localização
+                  {t('contact.info.location.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Rua da Fé, 123<br />
-                  Centro - São Paulo, SP<br />
-                  CEP: 01234-567
-                </p>
+                <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('contact.info.location.address') }} />
               </CardContent>
             </Card>
 
@@ -114,13 +112,13 @@ const Contact = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5" />
-                  Telefone
+                  {t('contact.info.phone.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  (11) 5198-2149<br />
-                  WhatsApp: (11) 5198-2149
+                  {t('contact.info.phone.main')}<br />
+                  {t('contact.info.phone.whatsapp')}
                 </p>
               </CardContent>
             </Card>
@@ -129,13 +127,13 @@ const Contact = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Mail className="h-5 w-5" />
-                  Email
+                  {t('contact.info.email.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  contato@falandosobrejesus.com.br<br />
-                  pastoreado@falandosobrejesus.com.br
+                  {t('contact.info.email.contact')}<br />
+                  {t('contact.info.email.pastoral')}
                 </p>
               </CardContent>
             </Card>
@@ -144,15 +142,15 @@ const Contact = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="h-5 w-5" />
-                  Horários de Funcionamento
+                  {t('contact.info.hours.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-muted-foreground">
-                  <p><span className="font-medium">Domingo:</span> 9h e 19h (Cultos)</p>
-                  <p><span className="font-medium">Quarta:</span> 19h30 (Estudo Bíblico)</p>
-                  <p><span className="font-medium">Sexta:</span> 19h30 (Vigília de Oração)</p>
-                  <p><span className="font-medium">Segunda a Sexta:</span> 9h às 17h (Secretaria)</p>
+                  <p>{t('contact.info.hours.sunday')}</p>
+                  <p>{t('contact.info.hours.wednesday')}</p>
+                  <p>{t('contact.info.hours.friday')}</p>
+                  <p>{t('contact.info.hours.weekdays')}</p>
                 </div>
               </CardContent>
             </Card>

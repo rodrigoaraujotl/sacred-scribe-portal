@@ -5,13 +5,56 @@
     "events": "Events",
     "blog": "Blog",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "ministry": "Ministry",
+    "findCell": "Find a cell near you",
+    "joinEvents": "Join our events",
+    "membersArea": "Members Area"
   },
   "auth": {
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
-    "welcome": "Hello, {{name}}"
+    "welcome": "Hello, {{name}}",
+    "loginForm": {
+      "title": "Login",
+      "description": "Enter your credentials to access your account",
+      "email": "Email",
+      "password": "Password",
+      "emailPlaceholder": "your@email.com",
+      "submit": "Login",
+      "submitting": "Logging in...",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register"
+    },
+    "registerForm": {
+      "title": "Register",
+      "description": "Create your account to access the portal",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "address": "Address",
+      "origin": "Origin",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Register",
+      "submitting": "Registering...",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Login",
+      "passwordMismatch": "Passwords do not match"
+    },
+    "forgotPasswordForm": {
+      "title": "Recover Password",
+      "description": "Enter your email to receive recovery instructions",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "submit": "Send",
+      "submitting": "Sending...",
+      "backToLogin": "Back to login"
+    }
   },
   "dashboard": {
     "title": "Dashboard",
@@ -20,7 +63,10 @@
       "members": "Members",
       "cells": "Cells",
       "posts": "Posts",
-      "events": "Events"
+      "events": "Events",
+      "totalMembers": "Total Members",
+      "totalCells": "Total Cells",
+      "totalPosts": "Total Posts"
     },
     "tabs": {
       "members": "Members",
@@ -29,7 +75,40 @@
     },
     "actions": {
       "addMember": "Add Member",
-      "newPost": "New Post"
+      "newPost": "New Post",
+      "edit": "Edit",
+      "publish": "Publish",
+      "unpublish": "Unpublish"
+    },
+    "membersTable": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "permission": "Permission",
+      "actions": "Actions",
+      "noPermission": "No permission",
+      "loading": "Loading..."
+    },
+    "postsTable": {
+      "title": "Title",
+      "author": "Author",
+      "date": "Date",
+      "status": "Status",
+      "actions": "Actions",
+      "published": "Published",
+      "draft": "Draft",
+      "rejected": "Rejected",
+      "loading": "Loading..."
+    },
+    "settings": {
+      "permissions": {
+        "title": "Permissions",
+        "description": "Manage member permissions"
+      },
+      "cells": {
+        "title": "Cells",
+        "description": "Manage cells and their leaders"
+      }
     }
   },
   "cells": {
@@ -64,5 +143,185 @@
       "description": "If you feel called to lead and disciple others, contact us. We offer complete training and support for new leaders.",
       "button": "I Want to be a Leader"
     }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflections, Bible studies and words of edification to strengthen your faith",
+    "searchPlaceholder": "Search posts...",
+    "loading": "Loading posts...",
+    "noPosts": "No posts available at the moment.",
+    "noSearchResults": "No posts found for your search.",
+    "error": "Error loading posts",
+    "reflection": "Reflection",
+    "readMore": "Read more",
+    "comments": "comments",
+    "by": "By"
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Join our events and strengthen your walk with Christ",
+    "regularEvents": "Regular Events",
+    "upcomingEvents": "Upcoming Special Events",
+    "loading": "Loading events...",
+    "noEvents": "No special events scheduled at the moment.",
+    "stayTuned": "Stay tuned to our social media for updates!",
+    "error": "Error loading events",
+    "participate": "Join Event",
+    "participants": "participants",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "inDays": "In {{count}} days",
+    "regularEventsList": {
+      "sundayService": {
+        "title": "Sunday Service",
+        "schedule": "Every Sunday, 9am and 7pm",
+        "location": "Main Temple",
+        "audience": "Whole family",
+        "description": "Moments of worship, praise and ministry of God's word."
+      },
+      "bibleStudy": {
+        "title": "Bible Study",
+        "schedule": "Every Wednesday, 7:30pm",
+        "location": "Study Hall",
+        "audience": "Youth and Adults",
+        "description": "Deepen yourself in God's word through thematic studies."
+      },
+      "prayerVigil": {
+        "title": "Prayer Vigil",
+        "schedule": "Every Friday, 7:30pm",
+        "location": "Main Temple",
+        "duration": "2 hours duration",
+        "description": "Special moment of prayer, intercession and seeking God."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contact us. We are here to pray with you and answer your questions",
+    "form": {
+      "title": "Send a Message",
+      "description": "Fill out the form below and we will contact you soon",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "subject": "Subject",
+      "message": "Message",
+      "firstNamePlaceholder": "Your first name",
+      "lastNamePlaceholder": "Your last name",
+      "emailPlaceholder": "your@email.com",
+      "phonePlaceholder": "(11) 99999-9999",
+      "subjectPlaceholder": "How can we help?",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "location": {
+        "title": "Location",
+        "address": "Faith Street, 123<br />Downtown - São Paulo, SP<br />ZIP: 01234-567"
+      },
+      "phone": {
+        "title": "Phone",
+        "main": "(11) 5198-2149",
+        "whatsapp": "WhatsApp: (11) 5198-2149"
+      },
+      "email": {
+        "title": "Email",
+        "contact": "contact@falandosobrejesus.com.br",
+        "pastoral": "pastoreado@falandosobrejesus.com.br"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "sunday": "Sunday: 9am and 7pm (Services)",
+        "wednesday": "Wednesday: 7:30pm (Bible Study)",
+        "friday": "Friday: 7:30pm (Prayer Vigil)",
+        "weekdays": "Monday to Friday: 9am to 5pm (Office)"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn about our history, mission and values as a Christian community",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Share the love of Jesus Christ through the word, fellowship and service, building lives and strengthening the faith of each person who is part of our community."
+    },
+    "values": {
+      "love": {
+        "title": "Love",
+        "description": "We demonstrate the love of Christ in all our actions and relationships"
+      },
+      "communion": {
+        "title": "Communion",
+        "description": "We value unity and fellowship among brothers in faith"
+      },
+      "word": {
+        "title": "Word",
+        "description": "We base our faith and teaching on the Word of God"
+      },
+      "service": {
+        "title": "Service",
+        "description": "We serve God and others with dedication and humility"
+      }
+    },
+    "history": {
+      "title": "Our History",
+      "paragraph1": "The ministry \"Speaking about Jesus\" was born from the desire to share God's word in a simple and accessible way, reaching hearts and transforming lives through the gospel.",
+      "paragraph2": "We started as a small Bible study group and grew to become a vibrant faith community, always focused on Jesus Christ as the center of everything."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "paragraph1": "To be a Christian community that positively impacts society, forming disciples committed to God's word and service to others.",
+      "paragraph2": "We seek to be a church relevant to our generation, without losing the essence of the gospel, always proclaiming Jesus as Savior and Lord."
+    }
+  },
+  "hero": {
+    "title": "Speaking about Jesus",
+    "subtitle": "A place to share God's word, grow in faith and build lives through the gospel of Christ.",
+    "exploreBlog": "Explore our Blog",
+    "knowCommunity": "Know our Community"
+  },
+  "featuredPosts": {
+    "title": "Latest Reflections",
+    "subtitle": "Discover the latest words of edification and spiritual growth",
+    "noPosts": "No posts found at the moment. Come back soon for new reflections!",
+    "reflection": "Reflection",
+    "readMore": "Read more",
+    "comments": "comments",
+    "by": "By",
+    "viewAll": "View all posts"
+  },
+  "footer": {
+    "title": "Speaking about Jesus",
+    "description": "Sharing God's word and building lives through the gospel.",
+    "quickLinks": "Quick Links",
+    "membersArea": {
+      "title": "Members Area",
+      "description": "Access exclusive content for our community",
+      "login": "Login"
+    },
+    "copyright": "© 2025 Speaking about Jesus. All rights reserved."
+  },
+  "index": {
+    "newsletter": {
+      "title": "Receive our newsletter",
+      "subtitle": "Stay up to date with the latest reflections and Bible studies",
+      "emailPlaceholder": "Your email",
+      "subscribe": "Subscribe"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "backHome": "Return to Home"
   }
-} 
+}

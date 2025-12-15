@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
+import { Suspense } from 'react';
 import { LoginPage } from '@/pages/auth/LoginPage';
 import { RegisterPage } from '@/pages/auth/RegisterPage';
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage';
@@ -35,38 +36,47 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Sonner />
-        <Router>
-          <Routes>
-            {/* Rotas públicas */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/" element={<Index />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/sobre" element={<About />} />
-            <Route path="/contato" element={<Contact />} />
-            <Route path="/celulas" element={<Cells />} />
-            <Route path="/eventos" element={<Events />} />
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Sonner />
+          <Router>
+            <Routes>
+              {/* Rotas públicas */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="/" element={<Index />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/sobre" element={<About />} />
+              <Route path="/contato" element={<Contact />} />
+              <Route path="/celulas" element={<Cells />} />
+              <Route path="/eventos" element={<Events />} />
 
-            {/* Rotas privadas */}
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <DashboardPage />
-                </PrivateRoute>
-              }
-            />
+              {/* Rotas privadas */}
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <DashboardPage />
+                  </PrivateRoute>
+                }
+              />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-      </TooltipProvider>
-      <Toaster />
-    </QueryClientProvider>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Router>
+        </TooltipProvider>
+        <Toaster />
+      </QueryClientProvider>
+    </Suspense>
   );
 }
 

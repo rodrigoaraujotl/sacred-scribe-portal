@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "react-i18next";
 
 interface Member {
   id: number;
@@ -23,6 +24,7 @@ interface Member {
 }
 
 export function MembersTable() {
+  const { t } = useTranslation();
   const { data: members, isLoading } = useQuery({
     queryKey: ["members", "all"],
     queryFn: async () => {
@@ -39,7 +41,7 @@ export function MembersTable() {
   });
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return <div>{t('dashboard.membersTable.loading')}</div>;
   }
 
   return (
@@ -47,11 +49,11 @@ export function MembersTable() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Nome</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Telefone</TableHead>
-            <TableHead>Permissão</TableHead>
-            <TableHead className="text-right">Ações</TableHead>
+            <TableHead>{t('dashboard.membersTable.name')}</TableHead>
+            <TableHead>{t('dashboard.membersTable.email')}</TableHead>
+            <TableHead>{t('dashboard.membersTable.phone')}</TableHead>
+            <TableHead>{t('dashboard.membersTable.permission')}</TableHead>
+            <TableHead className="text-right">{t('dashboard.membersTable.actions')}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -64,12 +66,12 @@ export function MembersTable() {
               <TableCell>{member.phone_number}</TableCell>
               <TableCell>
                 <Badge variant="secondary">
-                  {member.role?.name || "Sem permissão"}
+                  {member.role?.name || t('dashboard.membersTable.noPermission')}
                 </Badge>
               </TableCell>
               <TableCell className="text-right">
                 <Button variant="ghost" size="sm">
-                  Editar
+                  {t('dashboard.actions.edit')}
                 </Button>
               </TableCell>
             </TableRow>

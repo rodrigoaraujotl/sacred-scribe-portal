@@ -8,13 +8,15 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { usePosts } from "@/hooks/usePosts";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const Blog = () => {
+  const { t, i18n } = useTranslation();
   const { posts, isLoading, error } = usePosts();
   const [searchTerm, setSearchTerm] = useState("");
 
   if (error) {
-    toast.error("Erro ao carregar posts");
+    toast.error(t('blog.error'));
     console.error(error);
   }
 
@@ -24,7 +26,8 @@ const Blog = () => {
   ) || [];
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR', {
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    return new Date(dateString).toLocaleDateString(locale, {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
@@ -42,9 +45,9 @@ const Blog = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Blog</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('blog.title')}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Reflexões, estudos bíblicos e palavras de edificação para fortalecer sua fé
+            {t('blog.subtitle')}
           </p>
         </div>
 
@@ -53,7 +56,7 @@ const Blog = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder="Buscar posts..."
+              placeholder={t('blog.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -63,12 +66,12 @@ const Blog = () => {
 
         {isLoading ? (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">Carregando posts...</p>
+            <p className="text-muted-foreground">{t('blog.loading')}</p>
           </div>
         ) : filteredPosts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground">
-              {searchTerm ? "Nenhum post encontrado para sua busca." : "Nenhum post disponível no momento."}
+              {searchTerm ? t('blog.noSearchResults') : t('blog.noPosts')}
             </p>
           </div>
         ) : (
@@ -86,7 +89,7 @@ const Blog = () => {
                 )}
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary">Reflexão</Badge>
+                    <Badge variant="secondary">{t('blog.reflection')}</Badge>
                     <span className="text-sm text-muted-foreground">
                       {formatDate(post.created_at)}
                     </span>
@@ -96,7 +99,7 @@ const Blog = () => {
                   </CardTitle>
                   {post.author && (
                     <CardDescription>
-                      Por {post.author.username}
+                      {t('blog.by')} {post.author.username}
                     </CardDescription>
                   )}
                 </CardHeader>
@@ -106,10 +109,10 @@ const Blog = () => {
                   </p>
                   <div className="flex items-center justify-between">
                     <Button variant="ghost" size="sm">
-                      Ler mais
+                      {t('blog.readMore')}
                     </Button>
                     <span className="text-sm text-muted-foreground">
-                      {post.comments.length} comentários
+                      {post.comments.length} {t('blog.comments')}
                     </span>
                   </div>
                 </CardContent>

@@ -1,23 +1,26 @@
 
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent font-funnel">
-            Falando sobre Jesus
+            {t('hero.title')}
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto font-inconsolata">
-            Um lugar para compartilhar a palavra de Deus, crescer na fé e edificar vidas através do evangelho de Cristo.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 font-inconsolata">
-              Explore nosso Blog
+              {t('hero.exploreBlog')}
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 font-inconsolata">
-              Conheça nossa Comunidade
+              {t('hero.knowCommunity')}
             </Button>
           </div>
         </div>

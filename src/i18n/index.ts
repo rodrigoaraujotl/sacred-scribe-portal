@@ -10,6 +10,8 @@ i18n
   .init({
     fallbackLng: 'pt',
     supportedLngs: ['pt', 'en', 'es'],
+    defaultNS: 'common',
+    ns: ['common'],
     debug: process.env.NODE_ENV === 'development',
     
     interpolation: {
@@ -18,6 +20,15 @@ i18n
 
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
+    },
+    
+    react: {
+      useSuspense: true,
+    },
+    
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
     },
   });
 

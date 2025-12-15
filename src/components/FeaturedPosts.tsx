@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslation } from "react-i18next";
 
 interface Post {
   id: number;
@@ -23,8 +24,11 @@ interface FeaturedPostsProps {
 }
 
 const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
+  const { t, i18n } = useTranslation();
+  
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR', {
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    return new Date(dateString).toLocaleDateString(locale, {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
@@ -41,9 +45,9 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Últimas Reflexões</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('featuredPosts.title')}</h2>
             <p className="text-muted-foreground text-lg">
-              Descubra as mais recentes palavras de edificação e crescimento espiritual
+              {t('featuredPosts.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -67,19 +71,19 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
   }
 
   return (
-    <section className="py-16">
+      <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Últimas Reflexões</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('featuredPosts.title')}</h2>
           <p className="text-muted-foreground text-lg">
-            Descubra as mais recentes palavras de edificação e crescimento espiritual
+            {t('featuredPosts.subtitle')}
           </p>
         </div>
         
         {posts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">
-              Nenhum post encontrado no momento. Volte em breve para novas reflexões!
+              {t('featuredPosts.noPosts')}
             </p>
           </div>
         ) : (
@@ -98,7 +102,7 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
                   )}
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary">Reflexão</Badge>
+                      <Badge variant="secondary">{t('featuredPosts.reflection')}</Badge>
                       <span className="text-sm text-muted-foreground">
                         {formatDate(post.created_at)}
                       </span>
@@ -108,7 +112,7 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
                     </CardTitle>
                     {post.author && (
                       <CardDescription>
-                        Por {post.author.first_name} {post.author.last_name}
+                        {t('featuredPosts.by')} {post.author.first_name} {post.author.last_name}
                       </CardDescription>
                     )}
                   </CardHeader>
@@ -118,11 +122,11 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
                     </p>
                     <div className="flex items-center justify-between">
                       <Button variant="ghost" size="sm">
-                        Ler mais
+                        {t('featuredPosts.readMore')}
                       </Button>
                       {post.comments && (
                         <span className="text-sm text-muted-foreground">
-                          {post.comments.length} comentários
+                          {post.comments.length} {t('featuredPosts.comments')}
                         </span>
                       )}
                     </div>
@@ -133,7 +137,7 @@ const FeaturedPosts = ({ posts, loading }: FeaturedPostsProps) => {
             
             <div className="text-center">
               <Button size="lg" variant="outline">
-                Ver todos os posts
+                {t('featuredPosts.viewAll')}
               </Button>
             </div>
           </>

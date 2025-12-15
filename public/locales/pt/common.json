@@ -5,13 +5,56 @@
     "events": "Eventos",
     "blog": "Blog",
     "about": "Sobre",
-    "contact": "Contato"
+    "contact": "Contato",
+    "ministry": "Ministério",
+    "findCell": "Encontre uma célula próxima a você",
+    "joinEvents": "Participe dos nossos eventos",
+    "membersArea": "Área de Membros"
   },
   "auth": {
     "login": "Entrar",
     "register": "Registrar",
     "logout": "Sair",
-    "welcome": "Olá, {{name}}"
+    "welcome": "Olá, {{name}}",
+    "loginForm": {
+      "title": "Login",
+      "description": "Entre com suas credenciais para acessar sua conta",
+      "email": "Email",
+      "password": "Senha",
+      "emailPlaceholder": "seu@email.com",
+      "submit": "Entrar",
+      "submitting": "Entrando...",
+      "forgotPassword": "Esqueceu sua senha?",
+      "noAccount": "Não tem uma conta?",
+      "registerLink": "Registre-se"
+    },
+    "registerForm": {
+      "title": "Registro",
+      "description": "Crie sua conta para acessar o portal",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "phone": "Telefone",
+      "address": "Endereço",
+      "origin": "Origem",
+      "password": "Senha",
+      "confirmPassword": "Confirmar Senha",
+      "submit": "Registrar",
+      "submitting": "Registrando...",
+      "hasAccount": "Já tem uma conta?",
+      "loginLink": "Faça login",
+      "passwordMismatch": "As senhas não coincidem"
+    },
+    "forgotPasswordForm": {
+      "title": "Recuperar Senha",
+      "description": "Digite seu email para receber as instruções de recuperação",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "backToLogin": "Voltar para o login"
+    }
   },
   "dashboard": {
     "title": "Dashboard",
@@ -20,7 +63,10 @@
       "members": "Membros",
       "cells": "Células",
       "posts": "Posts",
-      "events": "Eventos"
+      "events": "Eventos",
+      "totalMembers": "Total de Membros",
+      "totalCells": "Total de Células",
+      "totalPosts": "Total de Posts"
     },
     "tabs": {
       "members": "Membros",
@@ -29,7 +75,40 @@
     },
     "actions": {
       "addMember": "Adicionar Membro",
-      "newPost": "Novo Post"
+      "newPost": "Novo Post",
+      "edit": "Editar",
+      "publish": "Publicar",
+      "unpublish": "Despublicar"
+    },
+    "membersTable": {
+      "name": "Nome",
+      "email": "Email",
+      "phone": "Telefone",
+      "permission": "Permissão",
+      "actions": "Ações",
+      "noPermission": "Sem permissão",
+      "loading": "Carregando..."
+    },
+    "postsTable": {
+      "title": "Título",
+      "author": "Autor",
+      "date": "Data",
+      "status": "Status",
+      "actions": "Ações",
+      "published": "Publicado",
+      "draft": "Rascunho",
+      "rejected": "Rejeitado",
+      "loading": "Carregando..."
+    },
+    "settings": {
+      "permissions": {
+        "title": "Permissões",
+        "description": "Gerencie as permissões dos membros"
+      },
+      "cells": {
+        "title": "Células",
+        "description": "Gerencie as células e seus líderes"
+      }
     }
   },
   "cells": {
@@ -64,5 +143,185 @@
       "description": "Se você sente o chamado para liderar e discipular outros, entre em contato conosco. Oferecemos treinamento e suporte completo para novos líderes.",
       "button": "Quero ser um Líder"
     }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflexões, estudos bíblicos e palavras de edificação para fortalecer sua fé",
+    "searchPlaceholder": "Buscar posts...",
+    "loading": "Carregando posts...",
+    "noPosts": "Nenhum post disponível no momento.",
+    "noSearchResults": "Nenhum post encontrado para sua busca.",
+    "error": "Erro ao carregar posts",
+    "reflection": "Reflexão",
+    "readMore": "Ler mais",
+    "comments": "comentários",
+    "by": "Por"
+  },
+  "events": {
+    "title": "Eventos",
+    "subtitle": "Participe dos nossos eventos e fortaleça sua caminhada com Cristo",
+    "regularEvents": "Eventos Regulares",
+    "upcomingEvents": "Próximos Eventos Especiais",
+    "loading": "Carregando eventos...",
+    "noEvents": "Nenhum evento especial programado no momento.",
+    "stayTuned": "Fique atento às nossas redes sociais para novidades!",
+    "error": "Erro ao carregar eventos",
+    "participate": "Participar do Evento",
+    "participants": "participantes",
+    "today": "Hoje",
+    "tomorrow": "Amanhã",
+    "inDays": "Em {{count}} dias",
+    "regularEventsList": {
+      "sundayService": {
+        "title": "Culto Dominical",
+        "schedule": "Todo domingo, 9h e 19h",
+        "location": "Templo Principal",
+        "audience": "Toda a família",
+        "description": "Momentos de adoração, louvor e ministração da palavra de Deus."
+      },
+      "bibleStudy": {
+        "title": "Estudo Bíblico",
+        "schedule": "Toda quarta-feira, 19h30",
+        "location": "Salão de Estudos",
+        "audience": "Jovens e Adultos",
+        "description": "Aprofunde-se na palavra de Deus através de estudos temáticos."
+      },
+      "prayerVigil": {
+        "title": "Vigília de Oração",
+        "schedule": "Toda sexta-feira, 19h30",
+        "location": "Templo Principal",
+        "duration": "2 horas de duração",
+        "description": "Momento especial de oração, intercessão e busca a Deus."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Entre em contato conosco. Estamos aqui para orar com você e responder suas dúvidas",
+    "form": {
+      "title": "Envie uma Mensagem",
+      "description": "Preencha o formulário abaixo e entraremos em contato em breve",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "email": "Email",
+      "phone": "Telefone (opcional)",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "firstNamePlaceholder": "Seu nome",
+      "lastNamePlaceholder": "Seu sobrenome",
+      "emailPlaceholder": "seu@email.com",
+      "phonePlaceholder": "(11) 99999-9999",
+      "subjectPlaceholder": "Como podemos ajudar?",
+      "messagePlaceholder": "Escreva sua mensagem aqui...",
+      "submit": "Enviar Mensagem"
+    },
+    "info": {
+      "location": {
+        "title": "Localização",
+        "address": "Rua da Fé, 123<br />Centro - São Paulo, SP<br />CEP: 01234-567"
+      },
+      "phone": {
+        "title": "Telefone",
+        "main": "(11) 5198-2149",
+        "whatsapp": "WhatsApp: (11) 5198-2149"
+      },
+      "email": {
+        "title": "Email",
+        "contact": "contato@falandosobrejesus.com.br",
+        "pastoral": "pastoreado@falandosobrejesus.com.br"
+      },
+      "hours": {
+        "title": "Horários de Funcionamento",
+        "sunday": "Domingo: 9h e 19h (Cultos)",
+        "wednesday": "Quarta: 19h30 (Estudo Bíblico)",
+        "friday": "Sexta: 19h30 (Vigília de Oração)",
+        "weekdays": "Segunda a Sexta: 9h às 17h (Secretaria)"
+      }
+    }
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "subtitle": "Conheça nossa história, missão e valores como comunidade cristã",
+    "mission": {
+      "title": "Nossa Missão",
+      "description": "Compartilhar o amor de Jesus Cristo através da palavra, da comunhão e do serviço, edificando vidas e fortalecendo a fé de cada pessoa que faz parte da nossa comunidade."
+    },
+    "values": {
+      "love": {
+        "title": "Amor",
+        "description": "Demonstramos o amor de Cristo em todas as nossas ações e relacionamentos"
+      },
+      "communion": {
+        "title": "Comunhão",
+        "description": "Valorizamos a união e o companheirismo entre os irmãos na fé"
+      },
+      "word": {
+        "title": "Palavra",
+        "description": "Fundamentamos nossa fé e ensino na Palavra de Deus"
+      },
+      "service": {
+        "title": "Serviço",
+        "description": "Servimos a Deus e ao próximo com dedicação e humildade"
+      }
+    },
+    "history": {
+      "title": "Nossa História",
+      "paragraph1": "O ministério \"Falando sobre Jesus\" nasceu do desejo de compartilhar a palavra de Deus de forma simples e acessível, alcançando corações e transformando vidas através do evangelho.",
+      "paragraph2": "Começamos como um pequeno grupo de estudos bíblicos e crescemos para nos tornar uma comunidade vibrante de fé, sempre focados em Jesus Cristo como centro de tudo."
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "paragraph1": "Ser uma comunidade cristã que impacta positivamente a sociedade, formando discípulos comprometidos com a palavra de Deus e o serviço ao próximo.",
+      "paragraph2": "Buscamos ser uma igreja relevante para nossa geração, sem perder a essência do evangelho, sempre proclamando Jesus como Salvador e Senhor."
+    }
+  },
+  "hero": {
+    "title": "Falando sobre Jesus",
+    "subtitle": "Um lugar para compartilhar a palavra de Deus, crescer na fé e edificar vidas através do evangelho de Cristo.",
+    "exploreBlog": "Explore nosso Blog",
+    "knowCommunity": "Conheça nossa Comunidade"
+  },
+  "featuredPosts": {
+    "title": "Últimas Reflexões",
+    "subtitle": "Descubra as mais recentes palavras de edificação e crescimento espiritual",
+    "noPosts": "Nenhum post encontrado no momento. Volte em breve para novas reflexões!",
+    "reflection": "Reflexão",
+    "readMore": "Ler mais",
+    "comments": "comentários",
+    "by": "Por",
+    "viewAll": "Ver todos os posts"
+  },
+  "footer": {
+    "title": "Falando sobre Jesus",
+    "description": "Compartilhando a palavra de Deus e edificando vidas através do evangelho.",
+    "quickLinks": "Links Rápidos",
+    "membersArea": {
+      "title": "Área de Membros",
+      "description": "Acesse conteúdo exclusivo para nossa comunidade",
+      "login": "Fazer Login"
+    },
+    "copyright": "© 2025 Falando sobre Jesus. Todos os direitos reservados."
+  },
+  "index": {
+    "newsletter": {
+      "title": "Receba nossa newsletter",
+      "subtitle": "Fique por dentro das últimas reflexões e estudos bíblicos",
+      "emailPlaceholder": "Seu email",
+      "subscribe": "Inscrever-se"
+    }
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "close": "Fechar"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Página não encontrada",
+    "backHome": "Voltar para o Início"
   }
-} 
+}

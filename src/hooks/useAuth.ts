@@ -47,7 +47,7 @@ export function useAuth() {
 
       // 2. Criar o membro no banco de dados
       const { data: memberData, error: memberError } = await supabase
-        .from('members')
+        .from('member_teams')
         .insert([{
           first_name: userData.first_name,
           last_name: userData.last_name,

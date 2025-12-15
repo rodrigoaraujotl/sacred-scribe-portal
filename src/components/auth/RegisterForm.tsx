@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function RegisterForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -29,7 +31,7 @@ export function RegisterForm() {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert('As senhas não coincidem');
+      alert(t('auth.registerForm.passwordMismatch'));
       return;
     }
 
@@ -49,9 +51,9 @@ export function RegisterForm() {
   return (
     <Card className="w-[400px]">
       <CardHeader>
-        <CardTitle>Registro</CardTitle>
+        <CardTitle>{t('auth.registerForm.title')}</CardTitle>
         <CardDescription>
-          Crie sua conta para acessar o portal
+          {t('auth.registerForm.description')}
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
@@ -59,7 +61,7 @@ export function RegisterForm() {
           <div className="grid w-full items-center gap-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="firstName">Nome</Label>
+                <Label htmlFor="firstName">{t('auth.registerForm.firstName')}</Label>
                 <Input
                   id="firstName"
                   name="firstName"
@@ -69,7 +71,7 @@ export function RegisterForm() {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="lastName">Sobrenome</Label>
+                <Label htmlFor="lastName">{t('auth.registerForm.lastName')}</Label>
                 <Input
                   id="lastName"
                   name="lastName"
@@ -80,19 +82,19 @@ export function RegisterForm() {
               </div>
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t('auth.registerForm.email')}</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="seu@email.com"
+                placeholder={t('auth.registerForm.emailPlaceholder')}
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="phoneNumber">Telefone</Label>
+              <Label htmlFor="phoneNumber">{t('auth.registerForm.phone')}</Label>
               <Input
                 id="phoneNumber"
                 name="phoneNumber"
@@ -102,7 +104,7 @@ export function RegisterForm() {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="address">Endereço</Label>
+              <Label htmlFor="address">{t('auth.registerForm.address')}</Label>
               <Input
                 id="address"
                 name="address"
@@ -111,7 +113,7 @@ export function RegisterForm() {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="visitorOrigin">Origem</Label>
+              <Label htmlFor="visitorOrigin">{t('auth.registerForm.origin')}</Label>
               <Input
                 id="visitorOrigin"
                 name="visitorOrigin"
@@ -120,7 +122,7 @@ export function RegisterForm() {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password">{t('auth.registerForm.password')}</Label>
               <Input
                 id="password"
                 name="password"
@@ -131,7 +133,7 @@ export function RegisterForm() {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+              <Label htmlFor="confirmPassword">{t('auth.registerForm.confirmPassword')}</Label>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -145,12 +147,12 @@ export function RegisterForm() {
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? 'Registrando...' : 'Registrar'}
+            {isLoading ? t('auth.registerForm.submitting') : t('auth.registerForm.submit')}
           </Button>
           <div className="text-sm text-center">
-            Já tem uma conta?{' '}
+            {t('auth.registerForm.hasAccount')}{' '}
             <Link to="/login" className="text-primary hover:underline">
-              Faça login
+              {t('auth.registerForm.loginLink')}
             </Link>
           </div>
         </CardFooter>
